@@ -13,7 +13,7 @@
   },
   "permissions": ["activeTab"],
   "content_scripts": [{
-    "matches": ["http://*/*", "https://*/*", "*"],
+    "matches": ["http://*/*", "https://*/*"],
     "js": ["jquery.js", "popup.js"]
   }]
 }

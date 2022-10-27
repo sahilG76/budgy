@@ -7,8 +7,7 @@ $('#budget_submit_button').click(function() {
     // // get the submited cost
     // Check if budget is valid
     try {
-        var budget = parseFloat($("#budget_cost").val());
-        alert(budget);
+        var budget = parseFloat($('#budget_cost').val());
     }
     catch(error) {
         alert(error);
@@ -18,6 +17,7 @@ $('#budget_submit_button').click(function() {
 
     //calculate remaining budget
     var remaining_balance = budget - shopping_cart_cost;
+    console.log(budget);
     if(remaining_balance < 0 ) {
         //TODO: Alert User with Pop-up
         alert("Uh oh... you've gone over budget!");
