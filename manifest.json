@@ -1,10 +1,15 @@
 {
   "manifest_version": 3,
-  "name": "Hi Budgy",
-  "description": "Base Level Extension",
+  "name": "Budgy",
+  "description": "Budgy - An extension to help you manage an online shopping budget.",
   "version": "1.0",
   "action": {
-    "default_popup": "hello.html",
+    "default_popup": "popup.html",
     "default_icon": "images/hello_extensions.png"
-  }
+  },
+
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": ["activeTab"]
 }

@@ -1,0 +1,6 @@
+#shopping_cart{
+  background-color: grey;
+  width: 110px;
+  height: 110px;
+  overflow: scroll;
+}
