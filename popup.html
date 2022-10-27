@@ -1,15 +1,33 @@
 <html>
     <head>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="popup.css">
+        <script src = "jquery.js"></script>
+        <script src="popup.js"></script>
     </head>
     <body>
-        <h1>Sup</h1>
-        <script src="popup.js"></script>
-        <h1 id="budget_number">0</h1>
-        <div id="shopping_cart">
-            
-        </div>        <div id="shopping_cart">
 
+        <div id="balanceHeader">
+            <h1>Balance: </h1>
+            <p id="remaining_balance">0</p>
         </div>
+
+        <div id="shopping_cart">
+            <!-- use jquery to populate shopping items into this div -->
+            <div class="shopping_item" id="placehold_uniqueID">
+                shopping item
+                <!-- image, link, item name-->
+            </div>
+        </div>
+
+
+        <div id="setBudgetBtn">
+            <!-- form to update, use jquery to select ids and update accordingly -->
+            <form>
+                <label>Enter your budget: </label>
+                <input type="text" id="budget_cost">
+                <input type="submit" value="Submit" id="budget_submit_button">
+            </form> 
+        </div>
+
     </body>
 </html>

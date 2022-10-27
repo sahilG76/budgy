@@ -11,5 +11,9 @@
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": ["activeTab"]
+  "permissions": ["activeTab"],
+  "content_scripts": [{
+    "matches": ["http://*/*", "https://*/*", "*"],
+    "js": ["jquery.js", "popup.js"]
+  }]
 }

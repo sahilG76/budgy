@@ -1,7 +1,7 @@
 // first event that service worker listens for (runtime.onInstalled())
 chrome.runtime.onInstalled.addListener(() => {
     chrome.action.setBadgeText({
-        text: "OFF",
+        text: "ON",
     });
 });
 
