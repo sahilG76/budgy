@@ -4,8 +4,8 @@ chrome.runtime.onInstalled.addListener(() => {
         text: "ON",
     });
 });
-
 chrome.action.onClicked.addListener(async (tab) => {
+  chrome.tabs.executeScript({file:"amazon_click.js"});
     if (tab.url.startsWith(extensions) || tab.url.startsWith(webstore)) {
       // Retrieve the action badge to check if the extension is 'ON' or 'OFF'
       const prevState = await chrome.action.getBadgeText({ tabId: tab.id });
