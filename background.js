@@ -3,6 +3,15 @@ chrome.runtime.onInstalled.addListener(() => {
     chrome.action.setBadgeText({
         text: "ON",
     });
+    var savedBudget = 0;
+    chrome.storage.local.set(
+      {
+        savedBudget: savedBudget
+      }, 
+      function(){
+        console.log('Data set!');
+      }
+    );
 });
 chrome.action.onClicked.addListener(async (tab) => {
   chrome.tabs.executeScript({file:"amazon_click.js"});
