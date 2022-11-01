@@ -6,12 +6,17 @@ loadAll();
 
 $('#budget_submit_button').click(function() {
     // parse in the wanted new budget
-    var budget = parseFloat($('#budget_cost').val());
+    var budget = $('#budget_cost').val().trim();
     $("#budget_cost").val('');
+    if(budget == ""){
+        alert("Please enter an interger for your budget!");
+        return
+    }
     if(isNaN(budget)){
         alert("Uh oh... please enter an integer for your budget!");
         return;
     }
+    budget = parseFloat(budget);
     //calculate remaining budget
     var updated_remaining_balance = budget - shopping_cart_cost;
     if(updated_remaining_balance < 0 ) {
