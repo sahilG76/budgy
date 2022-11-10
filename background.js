@@ -4,9 +4,13 @@ chrome.runtime.onInstalled.addListener(() => {
         text: "ON",
     });
     var savedBudget = 0;
+    var remainingMoney = 0;
+    var cart = new Object();
     chrome.storage.local.set(
       {
-        savedBudget: savedBudget
+        savedBudget: savedBudget,
+        balance: remainingMoney,
+        shopping_cart: cart
       }, 
       function(){
         console.log('Data set!');

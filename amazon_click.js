@@ -1,22 +1,42 @@
 
 var AMAZON_URL = "https://www.amazon.com";
-var count_id = 0;
+alert("hi");
 if((AMAZON_URL == window.location.origin) && 
     (document.getElementById('add-to-cart-button') != null)) {
         $("#add-to-cart-button").click(function(){
-            console.log("add clickedd");
-            js_get_scrapes();
+            addToCart();
         });
 }
 
-// function updateCart(){
-//     let product_name = $("#productTitle").text();
-//     let product_url = window.location.href;
-//     $('#shopping_cart').append(
-//         '<div id="item_div' + count_id + '">'
-//     );
-//     // append('<button id="'+inp_cat+'" class="catBut">'+short+'</button>');
-// }
+function addToCart(){
+    let product_name = $("#productTitle").text();
+    let product_url = window.location.href;
+    let img_src = $("#imgTagWrapperId").children().attr('src');
+    // get price
+    let price = $("#corePrice_feature_div").children().children().children().text();
+    for(let i=1; i<price.length; i++){
+        if(price[i] == '$'){
+            price = parseFloat(price.substring(1, i));
+            break;
+        }
+    }
+    chrome.storage.local.get(['shopping_cart', 'balance'],function(result){
+        var cart = result.shopping_cart;
+        if(!(product_name in cart)){
+            let amount = 1;
+            cart[product_name] = {name: product_name, src: img_src, url: product_url, price: price, quantity: amount};
+        }else{
+            let amount = cart[product_name].quantity + 1;
+            cart[product_name].quantity = amount;
+        }
+        let remaining_bal = result.balance - price;
+        chrome.storage.local.set({'shopping_cart':cart});
+        chrome.storage.local.set({'balance':remaining_bal});
+        if(remaining_bal < 0){
+            alert("You have gone under your budget! Please remove something from your cart!");
+        }
+    });
+}
 
 function js_get_scrapes() {
     url = "https://www.amazon.com/gp/cart/view.html?ref_=nav_cart";
